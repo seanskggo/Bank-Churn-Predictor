@@ -1,0 +1,23 @@
+#!/bin/bash
+
+if [ "$X11_ACTIVATED" != "True" ]
+then
+    export DISPLAY=$(awk '/nameserver / {print $2; exit}' /etc/resolv.conf 2>/dev/null):0
+    export LIBGL_ALWAYS_INDIRECT=1
+    ./x11/xlaunch.exe -run ./x11/config.xlaunch
+    export X11_ACTIVATED=True
+    python3 $1
+    eog *.png >/dev/null 2>&1
+    rm *.png
+else
+    echo "relaunch X server? [y/n]"
+    read answer
+    if [ "$answer" == 'y' ]
+    then 
+        echo "relaunching..."
+        ./x11/xlaunch.exe -run ./x11/config.xlaunch
+    fi
+    python3 $1
+    eog *.png >/dev/null 2>&1
+    rm *.png
+fi
