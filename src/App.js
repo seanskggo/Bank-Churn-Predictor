@@ -15,19 +15,19 @@ import axios from 'axios';
 // Functions
 /////////////////////////////////////////////////////////////////////////////////
 
-function App() {
-  const [response, set_response] = useState("Hi");
+const App = () => {
+  const [response, set_response] = useState("not mounted");
   useEffect(() => {
     const getData = async () => {
       const rep = await axios.get("/calculate")
-      set_response(await rep.data);
+      set_response(rep.data);
     };
     getData();
   }, [])
-  console.log(response)
   return (
     <div className="App">
-      <text>Hello World!</text>
+      <input />
+      <text>The chance of attrition is {response.value}</text>
     </div>
   );
 }
