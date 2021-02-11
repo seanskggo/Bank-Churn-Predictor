@@ -52,14 +52,6 @@ df = pd.read_excel('customer.xlsx').replace(
         }
     }
 )
-print(df.columns)
-print(df[[
-    'Gender', 'Dependent_count', 
-    'Marital_Status', 'Income_Category', 'Total_Relationship_Count',
-    'Months_Inactive_12_mon', 'Contacts_Count_12_mon', 'Total_Revolving_Bal',
-    'Total_Amt_Chng_Q4_Q1', 'Total_Trans_Amt', 'Total_Trans_Ct', 'Total_Ct_Chng_Q4_Q1',
-    ]].loc[[147]])
-
 X = df[[
     'Gender', 'Dependent_count', 
     'Marital_Status', 'Income_Category', 'Total_Relationship_Count',
@@ -70,13 +62,9 @@ y = df['Attrition_Flag']
 
 X = scale.fit_transform(X.to_numpy())
 est = sm.OLS(y, X).fit()
-print(est.summary())
-
 scaled = scale.transform([[1, 0, 3, 1, 2, 3, 3, 0, 1.047, 692, 16, 0.6]])
-print(scaled)
-print("\n--------- Result ---------\n")
 predicted = est.predict(scaled[0])
-print(str(predicted) + "\n")
+print(predicted)
 
 
 # Tests
