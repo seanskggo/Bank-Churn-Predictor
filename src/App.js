@@ -17,19 +17,28 @@ import axios from 'axios';
 
 const App = () => {
   const [response, set_response] = useState("not mounted");
-  useEffect(() => {
+  const click = () => {
     const getData = async () => {
-      const rep = await axios.get("/calculate")
+    const rep = await axios.get("/calculate")
       set_response(rep.data);
     };
     getData();
-  }, [])
+  }
+
   return (
     <div className="App">
-      <input />
       <text>The chance of attrition is {response.value}</text>
+      <button onClick={click}>Submit</button>
     </div>
   );
 }
 
 export default App;
+
+// useEffect(() => {
+//   const getData = async () => {
+//     const rep = await axios.get("/calculate")
+//     set_response(rep.data);
+//   };
+//   getData();
+// }, [])
