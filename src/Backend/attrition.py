@@ -12,6 +12,7 @@ import pandas as pd
 import statsmodels.api as sm 
 from sklearn.preprocessing import StandardScaler
 from flask import Flask
+import json
 
 ################################################################################
 # Flask
@@ -23,7 +24,7 @@ app = Flask(__name__)
 # Regression Logic
 ################################################################################
 
-scale = StandardScaler()
+# Modify data with numerical values for training
 df = pd.read_excel('./customer.xlsx').replace(
     {
         'Attrition_Flag': {
@@ -59,22 +60,26 @@ df = pd.read_excel('./customer.xlsx').replace(
         }
     }
 )
-X = df[[
-        'Gender', 'Dependent_count', 
-        'Marital_Status', 'Income_Category', 'Total_Relationship_Count',
-        'Months_Inactive_12_mon', 'Contacts_Count_12_mon', 'Total_Revolving_Bal',
-        'Total_Amt_Chng_Q4_Q1', 'Total_Trans_Amt', 'Total_Trans_Ct', 'Total_Ct_Chng_Q4_Q1',
-    ]]
-y = df['Attrition_Flag']
 
-X = scale.fit_transform(X.to_numpy())
-est = sm.OLS(y, X).fit()
-scaled = scale.transform([[1, 0, 3, 1, 2, 3, 3, 0, 1.047, 692, 16, 0.6]])
-predicted = est.predict(scaled[0])
-
-@app.route('/')
+# POST after prediction made
+@app.route('/calculate', methods=['GET', 'POST'])
 def regression():
-    return(str(predicted[0]) + "---"  + str(predicted))
+    scale = StandardScaler()
+    X = df[[
+            'Gender', 'Dependent_count', 
+            'Marital_Status', 'Income_Category', 'Total_Relationship_Count',
+            'Months_Inactive_12_mon', 'Contacts_Count_12_mon', 'Total_Revolving_Bal',
+            'Total_Amt_Chng_Q4_Q1', 'Total_Trans_Amt', 'Total_Trans_Ct', 'Total_Ct_Chng_Q4_Q1',
+        ]]
+    y = df['Attrition_Flag']
+    X = scale.fit_transform(X.to_numpy())
+    est = sm.OLS(y, X).fit()
+    scaled = scale.transform([[1, 0, 3, 1, 2, 3, 3, 0, 1.047, 692, 16, 0.6]])
+    predicted = est.predict(scaled[0])
+    result = {
+        "value": predicted[0]
+    }
+    return(json.dumps(result))
 
 if __name__ == '__main__':
     app.run()
