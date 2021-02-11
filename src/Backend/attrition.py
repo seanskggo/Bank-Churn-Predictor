@@ -11,13 +11,20 @@
 import pandas as pd
 import statsmodels.api as sm 
 from sklearn.preprocessing import StandardScaler
+from flask import Flask
+
+################################################################################
+# Flask
+################################################################################
+
+app = Flask(__name__)
 
 ################################################################################
 # Regression Logic
 ################################################################################
 
 scale = StandardScaler()
-df = pd.read_excel('customer.xlsx').replace(
+df = pd.read_excel('./customer.xlsx').replace(
     {
         'Attrition_Flag': {
             'Existing Customer' : 0, 
@@ -53,10 +60,10 @@ df = pd.read_excel('customer.xlsx').replace(
     }
 )
 X = df[[
-    'Gender', 'Dependent_count', 
-    'Marital_Status', 'Income_Category', 'Total_Relationship_Count',
-    'Months_Inactive_12_mon', 'Contacts_Count_12_mon', 'Total_Revolving_Bal',
-    'Total_Amt_Chng_Q4_Q1', 'Total_Trans_Amt', 'Total_Trans_Ct', 'Total_Ct_Chng_Q4_Q1',
+        'Gender', 'Dependent_count', 
+        'Marital_Status', 'Income_Category', 'Total_Relationship_Count',
+        'Months_Inactive_12_mon', 'Contacts_Count_12_mon', 'Total_Revolving_Bal',
+        'Total_Amt_Chng_Q4_Q1', 'Total_Trans_Amt', 'Total_Trans_Ct', 'Total_Ct_Chng_Q4_Q1',
     ]]
 y = df['Attrition_Flag']
 
@@ -64,8 +71,13 @@ X = scale.fit_transform(X.to_numpy())
 est = sm.OLS(y, X).fit()
 scaled = scale.transform([[1, 0, 3, 1, 2, 3, 3, 0, 1.047, 692, 16, 0.6]])
 predicted = est.predict(scaled[0])
-print(predicted)
 
+@app.route('/')
+def regression():
+    return(str(predicted[0]) + "---"  + str(predicted))
+
+if __name__ == '__main__':
+    app.run()
 
 # Tests
 # Attrited: [[1, 0, 3, 1, 2, 3, 3, 0, 1.047, 692, 16, 0.6]]
@@ -73,3 +85,4 @@ print(predicted)
 # Attrited: [[0, 4, 2, 5, 2, 4, 2, 2102, 0.997, 1276, 26, 0.733]]
 # Existing: [[0, 4, 2, 4, 4, 1, 4, 1515, 0.592, 1293, 32, 0.6]]
 # Attrited: [[0, 2, 3, 5, 3, 2, 0, 1536, 1.317, 1592, 34, 1.0]]
+
