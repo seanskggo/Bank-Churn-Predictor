@@ -33,9 +33,9 @@ const check = (values, set_response) => {
 }
 
 // Create text input fields for form
-const create_input_field = (values, set_values, string) => {
+const create_input_field = (values, set_values, string, key) => {
   return (
-    <div className="Centre">
+    <div className="Centre" key={key}>
       <InputGroup className="mb-3">
         <InputGroup.Prepend>
           <InputGroup.Text>{string}</InputGroup.Text>
@@ -82,9 +82,9 @@ const Set_marriage_status = (values, set_values) => {
   let array = [[0, "Unknown"], [1, "Divorced"], [2, "Single"], [3, "Married"]]
   return (
     <DropdownButton variant="secondary" id="dropdown1" title={gen}>
-      {array.map((detail) => {
+      {array.map((detail, index) => {
         return (
-          <Dropdown.Item
+          <Dropdown.Item key={index}
             onClick={() => {
               change_value(detail[0], values, set_values, "Marital_Status");
               set_gen(detail[1])
@@ -105,9 +105,9 @@ const Set_income_category = (values, set_values) => {
   ]
   return (
     <DropdownButton variant="secondary" id="dropdown1" title={gen}>
-      {array.map((detail) => {
+      {array.map((detail, index) => {
         return (
-          <Dropdown.Item
+          <Dropdown.Item key={index}
             onClick={() => {
               change_value(detail[0], values, set_values, "Income_Category");
               set_gen(detail[1])
@@ -127,8 +127,8 @@ const Generate_fields = (values, set_values) => {
   ]
   return (
     <div>
-      {array_values.map((value) => {
-        return create_input_field(values, set_values, value)
+      {array_values.map((value, index) => {
+        return create_input_field(values, set_values, value, index)
       })}
     </div>
   )
@@ -152,7 +152,7 @@ const App = () => {
     'Total_Ct_Chng_Q4_Q1': null,
   });
   const click = () => {
-    // if (check(values, set_response)) return;
+    if (check(values, set_response)) return;
     // you have to post to /calulate 
     const getData = async () => {
       const rep = await axios.get("/calculate")
