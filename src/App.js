@@ -37,10 +37,10 @@ const create_input_field = (values, set_values, string) => {
     <div className="Centre">
       <InputGroup className="mb-3">
         <InputGroup.Prepend>
-          <InputGroup.Text>$</InputGroup.Text>
+          <InputGroup.Text>{string}</InputGroup.Text>
         </InputGroup.Prepend>
         <FormControl aria-label="Amount (to the nearest dollar)"
-          onChange={(event) => change_value(event, values, set_values, string)}
+          onChange={(event) => change_value(event.target.value, values, set_values, string)}
         />
       </InputGroup>
     </div>
@@ -50,8 +50,28 @@ const create_input_field = (values, set_values, string) => {
 // Change a value for given form
 const change_value = (event, values, set_values, string) => {
   let temp = { ...values }
-  temp[string] = event.target.value;
+  temp[string] = event;
   set_values(temp)
+}
+
+const Set_gender = (values, set_values) => {
+  const [gen, set_gen] = useState("Gender");
+  return (
+    <DropdownButton variant="secondary" id="dropdown1" title={gen}>
+      <Dropdown.Item
+        onClick={() => {
+          change_value(0, values, set_values, "Gender");
+          set_gen("Male")
+        }}
+      >Male</Dropdown.Item>
+      <Dropdown.Item
+        onClick={() => {
+          change_value(0, values, set_values, "Gender");
+          set_gen("Female")
+        }}
+      >Female</Dropdown.Item>
+    </DropdownButton>
+  )
 }
 
 const App = () => {
@@ -84,10 +104,7 @@ const App = () => {
     <div className="App">
       <text>{response}</text>
       {create_input_field(values, set_values, "Total_Revolving_Bal")}
-      <DropdownButton variant="secondary" id="dropdown1" title="Gender">
-        <Dropdown.Item>Male</Dropdown.Item>
-        <Dropdown.Item>Female</Dropdown.Item>
-      </DropdownButton>
+      {Set_gender(values, set_values)}
       <Button variant="secondary" onClick={click}>Submit</Button>
     </div>
   );
