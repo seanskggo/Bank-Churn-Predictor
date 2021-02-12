@@ -79,7 +79,7 @@ const App = () => {
         <Dropdown.Item>Male</Dropdown.Item>
         <Dropdown.Item>Female</Dropdown.Item>
       </DropdownButton>
-      <button onClick={click}>Submit</button>
+      <button type="button" class="btn btn-secondary" onClick={click}>Submit</button>
     </div>
   );
 }
