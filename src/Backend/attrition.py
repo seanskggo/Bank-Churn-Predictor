@@ -35,15 +35,6 @@ df = pd.read_excel('./customer.xlsx').replace(
             'M' : 0, 
             'F' : 1
         }, 
-        'Education_Level': {
-            'Unknown': 0,
-            'Uneducated': 1,
-            'High School': 2,
-            'Graduate': 3,
-            'College': 4,
-            'Post-Graduate': 5, 
-            'Doctorate': 6
-        }, 
         'Marital_Status': {
             'Unknown': 0,
             'Divorced': 1,
