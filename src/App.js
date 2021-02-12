@@ -18,6 +18,33 @@ import axios from 'axios';
 // Functions
 /////////////////////////////////////////////////////////////////////////////////
 
+// Check for complete input
+const check = (values, set_response) => {
+  for (let i of Object.values(values)) {
+    if (i === null) {
+      set_response("Please fill in all inputs");
+      return
+    }
+  }
+}
+
+// Create text input fields for form
+const create_input_field = (values, set_values, string) => {
+  return (
+    <div class="input-group mb-3" className='Centre'>
+      <div class="input-group-prepend">
+        <span class="input-group-text">$</span>
+      </div>
+      <input type="text" class="form-control"
+        aria-label="Amount (to the nearest dollar)" onChange={(event) => {
+          let temp = { ...values }
+          temp[string] = event.target.value;
+          set_values(temp)
+        }} />
+    </div>
+  )
+}
+
 const App = () => {
   const [response, set_response] = useState("");
   const [values, set_values] = useState({
@@ -35,28 +62,20 @@ const App = () => {
     'Total_Ct_Chng_Q4_Q1': null,
   });
   const click = () => {
-    // // Check for complete input
-    // for (let i of Object.values(values)) {
-    //   if (i === null) {
-    //     set_response("Please fill in all inputs");
-    //     return
-    //   }
-    // }
+    // check(values, set_response);
+    // you have to post to /calulate 
     const getData = async () => {
       const rep = await axios.get("/calculate")
       set_response("The chance of attrition is: " + rep.data.value);
     };
     getData();
+    console.log(values)
   }
   return (
     <div className="App">
       <text>{response}</text>
-      <input type="text" onChange={(event) => {
-        let temp = { ...values }
-        temp["Total_Revolving_Bal"] = event.target.value;
-        set_values(temp)
-      }} />
-      <DropdownButton variant="primary" id="dropdown1" title="Gender">
+      {create_input_field(values, set_values, "Total_Revolving_Bal")}
+      <DropdownButton variant="secondary" id="dropdown1" title="Gender">
         <Dropdown.Item>Male</Dropdown.Item>
         <Dropdown.Item>Female</Dropdown.Item>
       </DropdownButton>
