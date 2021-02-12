@@ -11,6 +11,9 @@ import './App.css';
 import React, { useState } from 'react';
 import DropdownButton from 'react-bootstrap/DropdownButton';
 import Dropdown from 'react-bootstrap/Dropdown';
+import Button from 'react-bootstrap/Button';
+import InputGroup from 'react-bootstrap/InputGroup';
+import FormControl from 'react-bootstrap/FormControl';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import axios from 'axios';
 
@@ -31,18 +34,24 @@ const check = (values, set_response) => {
 // Create text input fields for form
 const create_input_field = (values, set_values, string) => {
   return (
-    <div class="input-group mb-3" className='Centre'>
-      <div class="input-group-prepend">
-        <span class="input-group-text">$</span>
-      </div>
-      <input type="text" class="form-control"
-        aria-label="Amount (to the nearest dollar)" onChange={(event) => {
-          let temp = { ...values }
-          temp[string] = event.target.value;
-          set_values(temp)
-        }} />
+    <div className="Centre">
+      <InputGroup className="mb-3">
+        <InputGroup.Prepend>
+          <InputGroup.Text>$</InputGroup.Text>
+        </InputGroup.Prepend>
+        <FormControl aria-label="Amount (to the nearest dollar)"
+          onChange={(event) => change_value(event, values, set_values, string)}
+        />
+      </InputGroup>
     </div>
   )
+}
+
+// Change a value for given form
+const change_value = (event, values, set_values, string) => {
+  let temp = { ...values }
+  temp[string] = event.target.value;
+  set_values(temp)
 }
 
 const App = () => {
@@ -79,7 +88,7 @@ const App = () => {
         <Dropdown.Item>Male</Dropdown.Item>
         <Dropdown.Item>Female</Dropdown.Item>
       </DropdownButton>
-      <button type="button" class="btn btn-secondary" onClick={click}>Submit</button>
+      <Button variant="secondary" onClick={click}>Submit</Button>
     </div>
   );
 }
