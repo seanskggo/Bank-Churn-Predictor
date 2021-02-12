@@ -26,9 +26,10 @@ const check = (values, set_response) => {
   for (let i of Object.values(values)) {
     if (i === null) {
       set_response("Please fill in all inputs");
-      return
+      return true;
     }
   }
+  return false;
 }
 
 // Create text input fields for form
@@ -95,11 +96,11 @@ const Set_marriage_status = (values, set_values) => {
   )
 }
 
-// Set Marital Status
+// Set Income status
 const Set_income_category = (values, set_values) => {
   const [gen, set_gen] = useState("Income Category");
   let array = [
-    [0, "Unknown"], [1, "Less than $40K"], [2, "$40K - $60K"], 
+    [0, "Unknown"], [1, "Less than $40K"], [2, "$40K - $60K"],
     [3, "$60K - $80K"], [4, "$80K - $120K"], [5, "$120K +"]
   ]
   return (
@@ -118,7 +119,22 @@ const Set_income_category = (values, set_values) => {
   )
 }
 
+const Generate_fields = (values, set_values) => {
+  let array_values = [
+    'Dependent_count', 'Total_Relationship_Count', 'Months_Inactive_12_mon',
+    'Contacts_Count_12_mon', 'Total_Revolving_Bal', 'Total_Amt_Chng_Q4_Q1',
+    'Total_Trans_Amt', 'Total_Trans_Ct', 'Total_Ct_Chng_Q4_Q1'
+  ]
+  return (
+    <div>
+      {array_values.map((value) => {
+        return create_input_field(values, set_values, value)
+      })}
+    </div>
+  )
+}
 
+// Main app for export
 const App = () => {
   const [response, set_response] = useState("");
   const [values, set_values] = useState({
@@ -136,7 +152,7 @@ const App = () => {
     'Total_Ct_Chng_Q4_Q1': null,
   });
   const click = () => {
-    // check(values, set_response);
+    // if (check(values, set_response)) return;
     // you have to post to /calulate 
     const getData = async () => {
       const rep = await axios.get("/calculate")
@@ -148,7 +164,7 @@ const App = () => {
   return (
     <div className="App">
       <text>{response}</text>
-      {create_input_field(values, set_values, "Total_Revolving_Bal")}
+      {Generate_fields(values, set_values)}
       {Set_gender(values, set_values)}
       {Set_marriage_status(values, set_values)}
       {Set_income_category(values, set_values)}
