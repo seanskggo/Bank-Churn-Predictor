@@ -54,7 +54,7 @@ const change_value = (event, values, set_values, string) => {
   set_values(temp)
 }
 
-// Set gender 
+// Set Gender 
 const Set_gender = (values, set_values) => {
   const [gen, set_gen] = useState("Gender");
   return (
@@ -75,8 +75,8 @@ const Set_gender = (values, set_values) => {
   )
 }
 
-// Set gender 
-const Set_Marriage_status = (values, set_values) => {
+// Set Marital Status
+const Set_marriage_status = (values, set_values) => {
   const [gen, set_gen] = useState("Marriage Status");
   let array = [[0, "Unknown"], [1, "Divorced"], [2, "Single"], [3, "Married"]]
   return (
@@ -94,6 +94,30 @@ const Set_Marriage_status = (values, set_values) => {
     </DropdownButton>
   )
 }
+
+// Set Marital Status
+const Set_income_category = (values, set_values) => {
+  const [gen, set_gen] = useState("Income Category");
+  let array = [
+    [0, "Unknown"], [1, "Less than $40K"], [2, "$40K - $60K"], 
+    [3, "$60K - $80K"], [4, "$80K - $120K"], [5, "$120K +"]
+  ]
+  return (
+    <DropdownButton variant="secondary" id="dropdown1" title={gen}>
+      {array.map((detail) => {
+        return (
+          <Dropdown.Item
+            onClick={() => {
+              change_value(detail[0], values, set_values, "Income_Category");
+              set_gen(detail[1])
+            }}
+          >{detail[1]}</Dropdown.Item>
+        )
+      })}
+    </DropdownButton>
+  )
+}
+
 
 const App = () => {
   const [response, set_response] = useState("");
@@ -126,7 +150,8 @@ const App = () => {
       <text>{response}</text>
       {create_input_field(values, set_values, "Total_Revolving_Bal")}
       {Set_gender(values, set_values)}
-      {Set_Marriage_status(values, set_values)}
+      {Set_marriage_status(values, set_values)}
+      {Set_income_category(values, set_values)}
       <Button variant="secondary" onClick={click}>Submit</Button>
     </div>
   );
