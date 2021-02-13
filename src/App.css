@@ -40,8 +40,9 @@
   min-width: 160px !important;
 }
 
-.Top {
+.Margin {
   margin-top: 15px;
+  margin-bottom: 30px;
 }
 
 /*////////////////////////////////////////////////////////////////////////////////

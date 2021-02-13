@@ -14,6 +14,7 @@ import Dropdown from 'react-bootstrap/Dropdown';
 import Button from 'react-bootstrap/Button';
 import InputGroup from 'react-bootstrap/InputGroup';
 import FormControl from 'react-bootstrap/FormControl';
+import Card from 'react-bootstrap/Card';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import axios from 'axios';
 
@@ -159,25 +160,30 @@ const App = () => {
   });
   const click = () => {
     if (check(values, set_response)) return;
-    // you have to post to /calulate 
     const getData = async () => {
+      let formatted = JSON.stringify(values);
+      await axios.post('/calculate', formatted);
       const rep = await axios.get("/calculate")
       set_response("The chance of attrition is: " + rep.data.value);
     };
     getData();
-    console.log(values)
   }
   return (
     <div className="App Adjust">
-      <text>{response}</text>
       {Generate_fields(values, set_values)}
       <div className='Row Adjust Centre Hspace'>
         <SetGender values={values} set_values={set_values} />
         <SetMarriageStatus values={values} set_values={set_values} />
-        <SetIncomeCategory values={values} set_values={set_values}/>
+        <SetIncomeCategory values={values} set_values={set_values} />
       </div>
-      <Button variant="secondary Top" onClick={click}>Submit</Button>
-      </div>
+      <Button variant="secondary Margin" onClick={click}>Submit</Button>
+      <Card className="text-center Centre">
+        <Card.Header>Prediction</Card.Header>
+        <Card.Body>
+          <Card.Title>{response}</Card.Title>
+        </Card.Body>
+      </Card>
+    </div>
   );
 }
 
