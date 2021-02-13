@@ -11,7 +11,7 @@
 import pandas as pd
 import statsmodels.api as sm 
 from sklearn.preprocessing import StandardScaler
-from flask import Flask
+from flask import Flask, request
 import json
 
 ################################################################################
@@ -53,8 +53,10 @@ df = pd.read_excel('./customer.xlsx').replace(
 )
 
 # POST after prediction made
-@app.route('/calculate', methods=['GET', 'POST'])
+@app.route('/calculate', methods=['POST'])
 def regression():
+    # Get JSON data from POST request
+    rec = request.get_json()
     scale = StandardScaler()
     X = df[[
             'Gender', 'Dependent_count', 

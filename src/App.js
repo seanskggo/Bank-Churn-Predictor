@@ -160,13 +160,11 @@ const App = () => {
   });
   const click = () => {
     if (check(values, set_response)) return;
-    const getData = async () => {
-      let formatted = JSON.stringify(values);
-      await axios.post('/calculate', formatted);
-      const rep = await axios.get("/calculate")
-      set_response("The chance of attrition is: " + rep.data.value);
-    };
-    getData();
+    (() => {
+      axios.post("/calculate", values)
+        .then(res => console.log(res))
+        .catch(err => console.log(err))
+    })();
   }
   return (
     <div className="App Adjust">
