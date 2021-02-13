@@ -162,8 +162,13 @@ const App = () => {
     if (check(values, set_response)) return;
     (() => {
       axios.post("/calculate", values)
-        .then(res => console.log(res))
-        .catch(err => console.log(err))
+        .then(res => {
+          console.log(res);
+          set_response(res.data)
+        }).catch(err => {
+          console.log(err)
+          set_response("There was an error. Please refresh.")
+        })
     })();
   }
   return (

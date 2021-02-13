@@ -57,6 +57,13 @@ df = pd.read_excel('./customer.xlsx').replace(
 def regression():
     # Get JSON data from POST request
     rec = request.get_json()
+    # Process/error check JSON data
+    reg_values = list()
+    for i, j in rec.items():
+        try:
+            reg_values.append(int(j))
+        except:
+            return("All values should be numerical")
     scale = StandardScaler()
     X = df[[
             'Gender', 'Dependent_count', 
@@ -67,12 +74,9 @@ def regression():
     y = df['Attrition_Flag']
     X = scale.fit_transform(X.to_numpy())
     est = sm.OLS(y, X).fit()
-    scaled = scale.transform([[1, 0, 3, 1, 2, 3, 3, 0, 1.047, 692, 16, 0.6]])
+    scaled = scale.transform([reg_values])
     predicted = est.predict(scaled[0])
-    result = {
-        "value": predicted[0]
-    }
-    return(json.dumps(result))
+    return(f"Probability is {predicted[0]}")
 
 if __name__ == '__main__':
     app.run()
