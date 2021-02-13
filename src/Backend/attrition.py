@@ -76,15 +76,11 @@ def regression():
     est = sm.OLS(y, X).fit()
     scaled = scale.transform([reg_values])
     predicted = round(est.predict(scaled[0])[0] * 100, 2)
+    if predicted >= 99.99:
+        predicted = 99.99
+    elif predicted <= 0.01:
+        predicted = 0.01
     return(f"This customer is {predicted}% likely to leave")
 
 if __name__ == '__main__':
     app.run()
-
-# Tests
-# Attrited: [[1, 0, 3, 1, 2, 3, 3, 0, 1.047, 692, 16, 0.6]]
-# Existing: [[0, 3, 3, 4, 4, 3, 3, 1435, 0.787, 1217, 27, 0.8]]
-# Attrited: [[0, 4, 2, 5, 2, 4, 2, 2102, 0.997, 1276, 26, 0.733]]
-# Existing: [[0, 4, 2, 4, 4, 1, 4, 1515, 0.592, 1293, 32, 0.6]]
-# Attrited: [[0, 2, 3, 5, 3, 2, 0, 1536, 1.317, 1592, 34, 1.0]]
-
