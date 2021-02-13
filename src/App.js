@@ -38,10 +38,10 @@ const create_input_field = (values, set_values, string, key) => {
     <div className="Centre" key={key}>
       <InputGroup className="mb-3">
         <InputGroup.Prepend>
-          <InputGroup.Text>{string}</InputGroup.Text>
+          <InputGroup.Text className='Title'>{string[1]}</InputGroup.Text>
         </InputGroup.Prepend>
         <FormControl aria-label="Amount (to the nearest dollar)"
-          onChange={(event) => change_value(event.target.value, values, set_values, string)}
+          onChange={(event) => change_value(event.target.value, values, set_values, string[0])}
         />
       </InputGroup>
     </div>
@@ -121,14 +121,20 @@ const Set_income_category = (values, set_values) => {
 
 const Generate_fields = (values, set_values) => {
   let array_values = [
-    'Dependent_count', 'Total_Relationship_Count', 'Months_Inactive_12_mon',
-    'Contacts_Count_12_mon', 'Total_Revolving_Bal', 'Total_Amt_Chng_Q4_Q1',
-    'Total_Trans_Amt', 'Total_Trans_Ct', 'Total_Ct_Chng_Q4_Q1'
+    ['Dependent_count', 'Dependent Count'], 
+    ['Total_Relationship_Count', 'Total Relationship Count'], 
+    ['Months_Inactive_12_mon', 'Months Inactive (12 Months)'],
+    ['Contacts_Count_12_mon', 'Contact Count (12 Months)'], 
+    ['Total_Revolving_Bal', 'Total Revolving Balance'], 
+    ['Total_Amt_Chng_Q4_Q1', 'Total Amount Change'],
+    ['Total_Trans_Amt', 'Total Transaction Amount'], 
+    ['Total_Trans_Ct', 'Total Transaction Count'], 
+    ['Total_Ct_Chng_Q4_Q1', 'Total Transaction Change']
   ]
   return (
     <div>
-      {array_values.map((value, index) => {
-        return create_input_field(values, set_values, value, index)
+      {array_values.map((strings, index) => {
+        return create_input_field(values, set_values, strings, index)
       })}
     </div>
   )
