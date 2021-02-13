@@ -61,7 +61,7 @@ def regression():
     reg_values = list()
     for i, j in rec.items():
         try:
-            reg_values.append(int(j))
+            reg_values.append(float(j))
         except:
             return("All values should be numerical")
     scale = StandardScaler()
@@ -75,8 +75,8 @@ def regression():
     X = scale.fit_transform(X.to_numpy())
     est = sm.OLS(y, X).fit()
     scaled = scale.transform([reg_values])
-    predicted = est.predict(scaled[0])
-    return(f"Probability is {predicted[0]}")
+    predicted = est.predict(scaled[0])[0]
+    return(f"Probability is {predicted}")
 
 if __name__ == '__main__':
     app.run()
