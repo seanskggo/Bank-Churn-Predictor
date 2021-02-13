@@ -23,13 +23,25 @@
   width: 50vw;
 }
 
+.Hspace {
+  height: 40px;
+}
+
 .Title {
   width: 230px;
 }
 
 .Row {
   flex-direction: row;
-  margin-bottom: 15px;
+  justify-content: space-evenly;
+}
+
+.Box {
+  min-width: 160px !important;
+}
+
+.Top {
+  margin-top: 15px;
 }
 
 /*////////////////////////////////////////////////////////////////////////////////
@@ -39,5 +51,15 @@
 @media only screen and (max-width: 800px) { 
   .Centre {
     width: 85vw;
+  }
+}
+
+@media only screen and (max-width: 1000px) { 
+  .Hspace {
+    height: 130px;
+  }
+  .Row {
+    flex-direction: column;
+    justify-content: space-evenly;
   }
 }

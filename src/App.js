@@ -59,7 +59,7 @@ const change_value = (event, values, set_values, string) => {
 const SetGender = ({ values, set_values }) => {
   const [gen, set_gen] = useState("Gender");
   return (
-    <DropdownButton variant="secondary" id="dropdown1" title={gen}>
+    <DropdownButton variant="secondary Box" id="dropdown1" title={gen}>
       <Dropdown.Item
         onClick={() => {
           change_value(0, values, set_values, "Gender");
@@ -81,7 +81,7 @@ const SetMarriageStatus = ({ values, set_values }) => {
   const [gen, set_gen] = useState("Marriage Status");
   let array = [[0, "Unknown"], [1, "Divorced"], [2, "Single"], [3, "Married"]]
   return (
-    <DropdownButton variant="secondary" id="dropdown1" title={gen}>
+    <DropdownButton variant="secondary Box" id="dropdown1" title={gen}>
       {array.map((detail, index) => {
         return (
           <Dropdown.Item key={index}
@@ -104,7 +104,7 @@ const SetIncomeCategory = ({ values, set_values }) => {
     [3, "$60K - $80K"], [4, "$80K - $120K"], [5, "$120K +"]
   ]
   return (
-    <DropdownButton variant="secondary" id="dropdown1" title={gen}>
+    <DropdownButton variant="secondary Box" id="dropdown1" title={gen}>
       {array.map((detail, index) => {
         return (
           <Dropdown.Item key={index}
@@ -171,12 +171,12 @@ const App = () => {
     <div className="App Adjust">
       <text>{response}</text>
       {Generate_fields(values, set_values)}
-      <div className='Row Adjust Centre'>
+      <div className='Row Adjust Centre Hspace'>
         <SetGender values={values} set_values={set_values} />
         <SetMarriageStatus values={values} set_values={set_values} />
         <SetIncomeCategory values={values} set_values={set_values}/>
       </div>
-      <Button variant="secondary" onClick={click}>Submit</Button>
+      <Button variant="secondary Top" onClick={click}>Submit</Button>
       </div>
   );
 }
