@@ -167,7 +167,7 @@ const App = () => {
           set_response(res.data)
         }).catch(err => {
           console.log(err)
-          set_response("There was an error. Please refresh.")
+          set_response("There was an error")
         })
     })();
   }

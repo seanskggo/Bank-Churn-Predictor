@@ -75,8 +75,8 @@ def regression():
     X = scale.fit_transform(X.to_numpy())
     est = sm.OLS(y, X).fit()
     scaled = scale.transform([reg_values])
-    predicted = est.predict(scaled[0])[0]
-    return(f"Probability is {predicted}")
+    predicted = round(est.predict(scaled[0])[0] * 100, 2)
+    return(f"This customer is {predicted}% likely to leave")
 
 if __name__ == '__main__':
     app.run()
