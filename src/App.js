@@ -38,7 +38,7 @@ const create_input_field = (values, set_values, string, key) => {
     <div className="Centre" key={key}>
       <InputGroup className="mb-3">
         <InputGroup.Prepend>
-          <InputGroup.Text className='Title'>{string[1]}</InputGroup.Text>
+          <InputGroup.Text className='Title Adjust'>{string[1]}</InputGroup.Text>
         </InputGroup.Prepend>
         <FormControl aria-label="Amount (to the nearest dollar)"
           onChange={(event) => change_value(event.target.value, values, set_values, string[0])}
@@ -168,7 +168,7 @@ const App = () => {
     console.log(values)
   }
   return (
-    <div className="App">
+    <div className="App Adjust">
       <text>{response}</text>
       {Generate_fields(values, set_values)}
       {Set_gender(values, set_values)}

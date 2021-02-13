@@ -7,27 +7,23 @@
 // Imports
 ////////////////////////////////////////////////////////////////////////////////*/
 
-.App {
-  text-align: center;
-  min-height: 100vh;
+.Adjust {
   display: flex;
-  flex-direction: column;
+  text-align: center;
   align-items: center;
   justify-content: center;
 }
 
+.App {
+  min-height: 100vh;
+  flex-direction: column;
+}
+
 .Centre {
-  display: flex;
-  text-align: center;
-  align-items: center;
-  justify-content: center;
   width: 50vw;
 }
 
 .Title {
-  display: flex;
-  align-items: center;
-  justify-content: center;
   width: 230px;
 }
 
@@ -37,10 +33,6 @@
 
 @media only screen and (max-width: 800px) { 
   .Centre {
-    display: flex;
-    text-align: center;
-    align-items: center;
-    justify-content: center;
     width: 85vw;
   }
 }
