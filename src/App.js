@@ -56,7 +56,7 @@ const change_value = (event, values, set_values, string) => {
 }
 
 // Set Gender 
-const Set_gender = (values, set_values) => {
+const SetGender = ({ values, set_values }) => {
   const [gen, set_gen] = useState("Gender");
   return (
     <DropdownButton variant="secondary" id="dropdown1" title={gen}>
@@ -77,7 +77,7 @@ const Set_gender = (values, set_values) => {
 }
 
 // Set Marital Status
-const Set_marriage_status = (values, set_values) => {
+const SetMarriageStatus = ({ values, set_values }) => {
   const [gen, set_gen] = useState("Marriage Status");
   let array = [[0, "Unknown"], [1, "Divorced"], [2, "Single"], [3, "Married"]]
   return (
@@ -97,7 +97,7 @@ const Set_marriage_status = (values, set_values) => {
 }
 
 // Set Income status
-const Set_income_category = (values, set_values) => {
+const SetIncomeCategory = ({ values, set_values }) => {
   const [gen, set_gen] = useState("Income Category");
   let array = [
     [0, "Unknown"], [1, "Less than $40K"], [2, "$40K - $60K"],
@@ -121,14 +121,14 @@ const Set_income_category = (values, set_values) => {
 
 const Generate_fields = (values, set_values) => {
   let array_values = [
-    ['Dependent_count', 'Dependent Count'], 
-    ['Total_Relationship_Count', 'Total Relationship Count'], 
+    ['Dependent_count', 'Dependent Count'],
+    ['Total_Relationship_Count', 'Total Relationship Count'],
     ['Months_Inactive_12_mon', 'Months Inactive (12 Months)'],
-    ['Contacts_Count_12_mon', 'Contact Count (12 Months)'], 
-    ['Total_Revolving_Bal', 'Total Revolving Balance'], 
+    ['Contacts_Count_12_mon', 'Contact Count (12 Months)'],
+    ['Total_Revolving_Bal', 'Total Revolving Balance'],
     ['Total_Amt_Chng_Q4_Q1', 'Total Amount Change'],
-    ['Total_Trans_Amt', 'Total Transaction Amount'], 
-    ['Total_Trans_Ct', 'Total Transaction Count'], 
+    ['Total_Trans_Amt', 'Total Transaction Amount'],
+    ['Total_Trans_Ct', 'Total Transaction Count'],
     ['Total_Ct_Chng_Q4_Q1', 'Total Transaction Change']
   ]
   return (
@@ -171,11 +171,13 @@ const App = () => {
     <div className="App Adjust">
       <text>{response}</text>
       {Generate_fields(values, set_values)}
-      {Set_gender(values, set_values)}
-      {Set_marriage_status(values, set_values)}
-      {Set_income_category(values, set_values)}
+      <div className='Row Adjust Centre'>
+        <SetGender values={values} set_values={set_values} />
+        <SetMarriageStatus values={values} set_values={set_values} />
+        <SetIncomeCategory values={values} set_values={set_values}/>
+      </div>
       <Button variant="secondary" onClick={click}>Submit</Button>
-    </div>
+      </div>
   );
 }
 
