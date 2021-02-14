@@ -12,6 +12,7 @@ import pandas as pd
 import statsmodels.api as sm 
 from sklearn.preprocessing import StandardScaler
 from flask import Flask, request
+from flask_cors import CORS
 import json
 
 ################################################################################
@@ -19,6 +20,7 @@ import json
 ################################################################################
 
 app = Flask(__name__)
+CORS(app)
 
 ################################################################################
 # Regression Logic

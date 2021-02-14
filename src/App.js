@@ -161,7 +161,7 @@ const App = () => {
   const click = () => {
     if (check(values, set_response)) return;
     (() => {
-      axios.post("/calculate", values)
+      axios.post("https://bank-churn-api.herokuapp.com/calculate", values)
         .then(res => {
           console.log(res);
           set_response(res.data)
