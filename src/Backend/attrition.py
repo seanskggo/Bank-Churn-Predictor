@@ -25,7 +25,7 @@ app = Flask(__name__)
 ################################################################################
 
 # Modify data with numerical values for training
-df = pd.read_excel('./customer.xlsx').replace(
+df = pd.read_excel('./customer.xlsx', engine='openpyxl').replace(
     {
         'Attrition_Flag': {
             'Existing Customer' : 0, 
