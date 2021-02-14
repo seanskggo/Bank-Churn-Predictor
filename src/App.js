@@ -16,6 +16,7 @@ import InputGroup from 'react-bootstrap/InputGroup';
 import FormControl from 'react-bootstrap/FormControl';
 import Card from 'react-bootstrap/Card';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import cover from './assets/cover.png'
 import axios from 'axios';
 
 /////////////////////////////////////////////////////////////////////////////////
@@ -173,6 +174,9 @@ const App = () => {
   }
   return (
     <div className="App Adjust">
+      <div className="Background Adjust">
+        Hello
+      </div>
       {Generate_fields(values, set_values)}
       <div className='Row Adjust Centre Hspace'>
         <SetGender values={values} set_values={set_values} />
@@ -180,7 +184,7 @@ const App = () => {
         <SetIncomeCategory values={values} set_values={set_values} />
       </div>
       <Button variant="secondary Margin" onClick={click}>Submit</Button>
-      <Card className="text-center Centre">
+      <Card className="text-center Centre Margin2">
         <Card.Header>Prediction</Card.Header>
         <Card.Body>
           <Card.Title>{response}</Card.Title>
