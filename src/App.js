@@ -162,6 +162,7 @@ const App = () => {
   const click = () => {
     if (check(values, set_response)) return;
     (() => {
+      set_response("Calculating... Please refresh if this takes too long")
       axios.post("https://bank-churn-api.herokuapp.com/calculate", values)
         .then(res => {
           console.log(res);
