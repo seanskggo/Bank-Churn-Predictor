@@ -174,8 +174,8 @@ const App = () => {
   }
   return (
     <div className="App Adjust">
-      <div className="Background Adjust">
-        Hello
+      <div className="Background Adjust Column">
+        <text className='Header_title'>Bank Churn Predictor</text>
       </div>
       {Generate_fields(values, set_values)}
       <div className='Row Adjust Centre Hspace'>
