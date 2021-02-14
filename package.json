@@ -38,5 +38,5 @@
       "last 1 safari version"
     ]
   },
-  "proxy": "https://bank-churner-flask-api.herokuapp.com/"
+  "proxy": "https://bank-churn-api.herokuapp.com/"
 }
