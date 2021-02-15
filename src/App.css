@@ -87,9 +87,10 @@
 
 .Text_box {
   height: 20vh;
-  width: 80vw;
+  width: calc(30px + 40vw);
   min-height: 160px;
   margin-bottom: 20px;
+  margin-top: 50px;
 }
 
 .Desc_para {
@@ -101,7 +102,7 @@
 
 .Desc_micro {
   font-size: calc(1vmin + 10px);
-  width: 70vw;
+  width: calc(200px + 25vw);
 }
 
 /*////////////////////////////////////////////////////////////////////////////////
