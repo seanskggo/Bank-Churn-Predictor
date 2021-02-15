@@ -211,7 +211,10 @@ const Slot_2 = (props) => {
   const { forwardedRef } = props;
   return (
     <div ref={forwardedRef} className={Animation(props, 'Enter')}>
-      Hi
+      <div className='Text_box Column Adjust'> 
+        <text className='Desc_para'>Key Terms</text>
+        <text className='Desc_para Desc_micro'>About</text>
+      </div>
     </div>
   );
 };
@@ -236,6 +239,13 @@ const App = () => {
         <text className='Header_title'>FutureSpace</text>
         <text className='Header_title Desc_title'>Free Customer-Churning
         Prediction Tool</text>
+      </div>
+      <div className='Text_box Column Adjust Enter'> 
+        <text className='Desc_para'>About</text>
+        <text className='Desc_para Desc_micro'>
+          FutureSpace is a machine-learned predictor that estimates the likelihood
+          of a current bank customer leaving to another competitor.
+        </text>
       </div>
       <Slot2 />
       <Slot1 />

@@ -70,7 +70,6 @@
 .Background {
   height: 80vh;
   width: 100vw;
-  margin-bottom: 80px;
   background-image: url("./assets/cover.png");
 }
 
@@ -83,6 +82,25 @@
 
 .Desc_title {
   font-size: calc(1vmin + 15px);
+  width: 70vw;
+}
+
+.Text_box {
+  height: 20vh;
+  width: 80vw;
+  min-height: 160px;
+  margin-bottom: 20px;
+}
+
+.Desc_para {
+  font-size: calc(1vmin + 25px);
+  width: 80vw;
+  color: rgb(3, 3, 3);
+  font-family: Montserrat-ExtraLight;
+}
+
+.Desc_micro {
+  font-size: calc(1vmin + 10px);
   width: 70vw;
 }
 
