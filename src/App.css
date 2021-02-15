@@ -67,6 +67,10 @@
   margin-bottom: 50px;
 }
 
+.Margin3 {
+  margin-top: 50px;
+}
+
 .Background {
   height: 80vh;
   width: 100vw;
@@ -103,6 +107,11 @@
 .Desc_micro {
   font-size: calc(1vmin + 10px);
   width: calc(200px + 25vw);
+}
+
+.Values_micro {
+  font-size: calc(1vmin + 8px) !important;
+  font-family: Montserrat-ExtraLight;
 }
 
 /*////////////////////////////////////////////////////////////////////////////////

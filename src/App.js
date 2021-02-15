@@ -41,7 +41,7 @@ const create_input_field = (values, set_values, string, key) => {
     <div className="Centre" key={key}>
       <InputGroup className="mb-3">
         <InputGroup.Prepend>
-          <InputGroup.Text className='Title Adjust'>{string[1]}</InputGroup.Text>
+          <InputGroup.Text className='Title Adjust Values_micro'>{string[1]}</InputGroup.Text>
         </InputGroup.Prepend>
         <FormControl aria-label="Amount (to the nearest dollar)"
           onChange={(event) => change_value(event.target.value, values, set_values, string[0])}
@@ -62,14 +62,14 @@ const change_value = (event, values, set_values, string) => {
 const SetGender = ({ values, set_values }) => {
   const [gen, set_gen] = useState("Gender");
   return (
-    <DropdownButton variant="secondary Box" id="dropdown1" title={gen}>
-      <Dropdown.Item
+    <DropdownButton variant="secondary Box Values_micro" id="dropdown1" title={gen}>
+      <Dropdown.Item className='Values_micro'
         onClick={() => {
           change_value(0, values, set_values, "Gender");
           set_gen("Male")
         }}
       >Male</Dropdown.Item>
-      <Dropdown.Item
+      <Dropdown.Item className='Values_micro'
         onClick={() => {
           change_value(0, values, set_values, "Gender");
           set_gen("Female")
@@ -84,10 +84,10 @@ const SetMarriageStatus = ({ values, set_values }) => {
   const [gen, set_gen] = useState("Marriage Status");
   let array = [[0, "Unknown"], [1, "Divorced"], [2, "Single"], [3, "Married"]]
   return (
-    <DropdownButton variant="secondary Box" id="dropdown1" title={gen}>
+    <DropdownButton variant="secondary Box Values_micro" id="dropdown1" title={gen}>
       {array.map((detail, index) => {
         return (
-          <Dropdown.Item key={index}
+          <Dropdown.Item key={index} className='Values_micro'
             onClick={() => {
               change_value(detail[0], values, set_values, "Marital_Status");
               set_gen(detail[1])
@@ -107,10 +107,10 @@ const SetIncomeCategory = ({ values, set_values }) => {
     [3, "$60K - $80K"], [4, "$80K - $120K"], [5, "$120K +"]
   ]
   return (
-    <DropdownButton variant="secondary Box" id="dropdown1" title={gen}>
+    <DropdownButton variant="secondary Box Values_micro" id="dropdown1" title={gen}>
       {array.map((detail, index) => {
         return (
-          <Dropdown.Item key={index}
+          <Dropdown.Item key={index} className='Values_micro'
             onClick={() => {
               change_value(detail[0], values, set_values, "Income_Category");
               set_gen(detail[1])
@@ -174,15 +174,15 @@ const Main = () => {
     })();
   }
   return (
-    <div>
+    <div className='Margin3'>
       {Generate_fields(values, set_values)}
       <div className='Row Adjust Centre Hspace'>
         <SetGender values={values} set_values={set_values} />
         <SetMarriageStatus values={values} set_values={set_values} />
         <SetIncomeCategory values={values} set_values={set_values} />
       </div>
-      <Button variant="secondary Margin" onClick={click}>Submit</Button>
-      <Card className="text-center Centre Margin2">
+      <Button variant="secondary Margin Values_micro" onClick={click}>Submit</Button>
+      <Card className="text-center Centre Margin2 Values_micro">
         <Card.Header>Prediction</Card.Header>
         <Card.Body>
           <Card.Title>{response}</Card.Title>
