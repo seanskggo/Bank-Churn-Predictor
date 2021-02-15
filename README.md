@@ -6,6 +6,6 @@ Front-end technologies: React (incl. Axios)
 
 Back-end technologies: Flask (incl. CORS), Sklearn, Pandas, Statsmodel
 
-Hosting: Firebase (Front-end), Heroku (back-end)
+Hosting: Firebase (front-end), Heroku (back-end)
 
 Available at: https://futurespace-predict.web.app
