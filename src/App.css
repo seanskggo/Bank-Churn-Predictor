@@ -76,6 +76,10 @@
   margin-bottom: 15px;
 }
 
+.Margin5 {
+  margin-bottom: 50px;
+}
+
 .Header_title {
   font-size: calc(1vmin + 40px);
   width: 80vw;

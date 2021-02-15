@@ -218,7 +218,7 @@ const Slot_1 = (props) => {
 const Slot_2 = (props) => {
   const { forwardedRef } = props;
   return (
-    <div ref={forwardedRef} className={Animation(props, 'Enter')}>
+    <div ref={forwardedRef} className={Animation(props, 'Enter'), 'Margin5'}>
       <div className='Text_box Column Adjust Big'>
         <div className='Margin2'>
           <text className='Desc_para'>Key Terms</text>
