@@ -75,14 +75,15 @@
 }
 
 .Header_title {
-  font-size: 50px;
+  font-size: calc(1vmin + 40px);
   width: 80vw;
   color: rgb(255, 255, 255);
   font-family: Montserrat-ExtraLight;
 }
 
 .Desc_title {
-  font-size: 20px;
+  font-size: calc(1vmin + 15px);
+  width: 70vw;
 }
 
 /*////////////////////////////////////////////////////////////////////////////////
