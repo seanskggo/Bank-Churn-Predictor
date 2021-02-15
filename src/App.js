@@ -7,6 +7,8 @@
 // Imports
 /////////////////////////////////////////////////////////////////////////////////
 
+import 'intersection-observer';
+import handleViewport from 'react-in-viewport';
 import './App.css';
 import React, { useState } from 'react';
 import DropdownButton from 'react-bootstrap/DropdownButton';
@@ -162,17 +164,17 @@ const Main = () => {
     (() => {
       set_response("Calculating... First submit may take a while.")
       axios.post("https://bank-churn-api.herokuapp.com/calculate", values)
-        .then(res => {
-          console.log(res);
-          set_response(res.data)
-        }).catch(err => {
-          console.log(err)
-          set_response("There was an error")
-        })
+      .then(res => {
+        console.log(res);
+        set_response(res.data)
+      }).catch(err => {
+        console.log(err)
+        set_response("There was an error")
+      })
     })();
   }
   return (
-    <div className='Enter'>
+    <div>
       {Generate_fields(values, set_values)}
       <div className='Row Adjust Centre Hspace'>
         <SetGender values={values} set_values={set_values} />
@@ -190,6 +192,42 @@ const Main = () => {
   );
 }
 
+const Animation = (props, string) => {
+  const { inViewport, enterCount } = props;
+  if (inViewport && enterCount === 1) return string;
+  else return string + '_without';
+}
+
+const Slot_1 = (props) => {
+  const { forwardedRef } = props;
+  return (
+    <div ref={forwardedRef} className={Animation(props, 'Enter')}>
+      <Main />
+    </div>
+  );
+};
+
+const Slot_2 = (props) => {
+  const { forwardedRef } = props;
+  return (
+    <div ref={forwardedRef} className={Animation(props, 'Enter')}>
+      Hi
+    </div>
+  );
+};
+
+/////////////////////////////////////////////////////////////////////////////////
+// Constants
+/////////////////////////////////////////////////////////////////////////////////
+
+// Slots
+const Slot1 = handleViewport(Slot_1);
+const Slot2 = handleViewport(Slot_2);
+
+/////////////////////////////////////////////////////////////////////////////////
+// Exports
+/////////////////////////////////////////////////////////////////////////////////
+
 // Main app for export
 const App = () => {
   return (
@@ -199,7 +237,8 @@ const App = () => {
         <text className='Header_title Desc_title'>Free Customer-Churning
         Prediction Tool</text>
       </div>
-      <Main />
+      <Slot2 />
+      <Slot1 />
     </div>
   );
 }
