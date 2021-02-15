@@ -126,7 +126,7 @@
 }
 
 .Values_micro {
-  font-size: calc(1vmin + 8px) !important;
+  font-size: calc(0.5vmin + 10px) !important;
   font-family: Montserrat-ExtraLight;
 }
 
