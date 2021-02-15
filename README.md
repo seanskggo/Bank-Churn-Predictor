@@ -1,6 +1,9 @@
 # Bank Churn Predictor
 
-Simple web app that predicts a customer's lieklihood of leaving a bank. 
+RESTful Web app that predicts a customer's lieklihood of leaving a bank (Customer Attrition). 
 
-Created with React and Flask
-Deployed on Firebase and Heroku
+Front-end technologies: React, Axios
+Back-end technologies: Flask (incl. CORS), Sklearn, Pandas, Statsmodel
+Hosting: Firebase (Front-end), Heroku (back-end)
+
+Available at: https://bank-churn-predictor.web.app/
