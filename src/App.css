@@ -50,6 +50,11 @@
   justify-content: space-evenly;
 }
 
+.Row2 {
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+
 .Column {
   flex-direction: column;
 }
@@ -63,22 +68,12 @@
   margin-bottom: 30px;
 }
 
-.Margin2 {
-  margin-bottom: 5px;
-}
-
 .Margin3 {
   margin-top: 50px;
 }
 
 .Margin4 {
   margin-bottom: 15px;
-}
-
-.Background {
-  height: 80vh;
-  width: 100vw;
-  background-image: url("./assets/cover.png");
 }
 
 .Header_title {
@@ -101,6 +96,15 @@
   margin-top: 50px;
 }
 
+.Stat_box {
+  height: 35vh;
+  width: calc(20vmin + 300px);
+  min-height: 160px;
+  justify-content: space-evenly;
+  margin-bottom: 40px;
+  margin-top: 60px;
+}
+
 .Big {
   height: 600px;
 }
@@ -120,6 +124,23 @@
 .Values_micro {
   font-size: calc(1vmin + 8px) !important;
   font-family: Montserrat-ExtraLight;
+}
+
+/*////////////////////////////////////////////////////////////////////////////////
+// Images
+////////////////////////////////////////////////////////////////////////////////*/
+
+.Background {
+  height: 80vh;
+  width: 100vw;
+  background-image: url("./assets/cover.png");
+}
+
+.Stat1 {
+  height: 25vmin;
+  width: 25vmin;
+  min-height: 140px;
+  min-width: 140px;
 }
 
 /*////////////////////////////////////////////////////////////////////////////////

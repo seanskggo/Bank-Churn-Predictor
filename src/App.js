@@ -19,6 +19,8 @@ import FormControl from 'react-bootstrap/FormControl';
 import Card from 'react-bootstrap/Card';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import axios from 'axios';
+import stat2 from './assets/stat2.png'
+import stat3 from './assets/stat3.png'
 
 /////////////////////////////////////////////////////////////////////////////////
 // Functions
@@ -266,14 +268,12 @@ const Slot_3 = (props) => {
   const { forwardedRef } = props;
   return (
     <div ref={forwardedRef} className={Animation(props, 'Enter')}>
-      <div className='Text_box Column Adjust'>
-        <div className='Margin2'>
-          <text className='Desc_para Adjust'>Current Statistics</text>
+      <div className='Stat_box Column Adjust'>
+        <text className='Desc_para Adjust'>Current Statistics</text>
+        <div className="Adjust Stat_box Row2">
+          <img alt="statistic 2" className="Stat1" src={stat2} />
+          <img alt="statistic 3" className="Stat1" src={stat3} />
         </div>
-        <text className='Desc_para Desc_micro'>
-          FutureSpace is a machine-learned predictor that estimates the likelihood
-          of a current bank customer leaving to another competitor (attrition).
-        </text>
       </div>
     </div>
   );
