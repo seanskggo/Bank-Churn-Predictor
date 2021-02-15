@@ -175,8 +175,11 @@ const Main = () => {
   }
   return (
     <div className='Margin3'>
+      <text className='Desc_para'>Predictor</text>
       <div className='Margin4'>
-        <text className='Desc_para'>Predictor</text>
+        <text className='Desc_para Desc_micro'>
+          Please refer to the <i>Key Terms</i> section below
+        </text>
       </div>
       {Generate_fields(values, set_values)}
       <div className='Row Adjust Centre Hspace'>
@@ -265,7 +268,7 @@ const Slot_3 = (props) => {
     <div ref={forwardedRef} className={Animation(props, 'Enter')}>
       <div className='Text_box Column Adjust'>
         <div className='Margin2'>
-          <text className='Desc_para'>Current Statistics</text>
+          <text className='Desc_para Adjust'>Current Statistics</text>
         </div>
         <text className='Desc_para Desc_micro'>
           FutureSpace is a machine-learned predictor that estimates the likelihood
