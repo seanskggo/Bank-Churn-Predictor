@@ -1,6 +1,6 @@
 # FutureSpace - Bank Churn Predictor 
 
-REST-ful web app that predicts a customer's lieklihood of leaving a bank (Customer Attrition). 
+REST-ful web app that predicts a customer's likelihood of leaving a bank (Customer Attrition). 
 
 Front-end technologies: React, Axios
 
