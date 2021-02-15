@@ -164,17 +164,20 @@ const Main = () => {
     (() => {
       set_response("Calculating... First submit may take a while.")
       axios.post("https://bank-churn-api.herokuapp.com/calculate", values)
-      .then(res => {
-        console.log(res);
-        set_response(res.data)
-      }).catch(err => {
-        console.log(err)
-        set_response("There was an error")
-      })
+        .then(res => {
+          console.log(res);
+          set_response(res.data)
+        }).catch(err => {
+          console.log(err)
+          set_response("There was an error")
+        })
     })();
   }
   return (
     <div className='Margin3'>
+      <div className='Margin4'>
+        <text className='Desc_para'>Predictor</text>
+      </div>
       {Generate_fields(values, set_values)}
       <div className='Row Adjust Centre Hspace'>
         <SetGender values={values} set_values={set_values} />
@@ -182,7 +185,7 @@ const Main = () => {
         <SetIncomeCategory values={values} set_values={set_values} />
       </div>
       <Button variant="secondary Margin Values_micro" onClick={click}>Submit</Button>
-      <Card className="text-center Centre Margin2 Values_micro">
+      <Card className="text-center Centre Values_micro">
         <Card.Header>Prediction</Card.Header>
         <Card.Body>
           <Card.Title>{response}</Card.Title>
@@ -211,11 +214,45 @@ const Slot_2 = (props) => {
   const { forwardedRef } = props;
   return (
     <div ref={forwardedRef} className={Animation(props, 'Enter')}>
-      <div className='Text_box Column Adjust'> 
-        <text className='Desc_para'>Key Terms</text>
+      <div className='Text_box Column Adjust Big'>
+        <div className='Margin2'>
+          <text className='Desc_para'>Key Terms</text>
+        </div>
         <text className='Desc_para Desc_micro'>
-          FutureSpace is a machine-learned predictor that estimates the likelihood
-          of a current bank customer leaving to another competitor (attrition).
+          <strong>Dependent Count</strong> - number of dependent children of assessee
+        </text>
+        <text className='Desc_para Desc_micro'>
+          <strong>Total Relationship Count</strong> - Total number of products held by the assessee
+        </text>
+        <text className='Desc_para Desc_micro'>
+          <strong>Months Inactive</strong> - Assessee's total inactive months in the past 12 months
+        </text>
+        <text className='Desc_para Desc_micro'>
+          <strong>Contact Count</strong> - Assessee's total number of contacts with bank in the past 12 months
+        </text>
+        <text className='Desc_para Desc_micro'>
+          <strong>Total Revolving Balance</strong> - Total revolving balance on credit card of assessee
+        </text>
+        <text className='Desc_para Desc_micro'>
+          <strong>Total Amount Change</strong> - Change in transaction amount (Q4 over Q1) of assessee
+        </text>
+        <text className='Desc_para Desc_micro'>
+          <strong>Total Transaction Amount</strong> - Assessee's total transaction amount in the past 12 months
+        </text>
+        <text className='Desc_para Desc_micro'>
+          <strong>Total Transaction Count</strong> - Assessee's total number of transactions in the past 12 months
+        </text>
+        <text className='Desc_para Desc_micro'>
+          <strong>Total Transaction Change</strong> - Change in number of transactions (Q4 over Q1) of assessee
+        </text>
+        <text className='Desc_para Desc_micro'>
+          <strong>Gender</strong> - Gender of assessee
+        </text>
+        <text className='Desc_para Desc_micro'>
+          <strong>Marriage Status</strong> - Marriage status of assessee
+        </text>
+        <text className='Desc_para Desc_micro'>
+          <strong>Income Category</strong> - Income category of assessee
         </text>
       </div>
     </div>
@@ -226,8 +263,10 @@ const Slot_3 = (props) => {
   const { forwardedRef } = props;
   return (
     <div ref={forwardedRef} className={Animation(props, 'Enter')}>
-      <div className='Text_box Column Adjust'> 
-        <text className='Desc_para'>Current Statistics</text>
+      <div className='Text_box Column Adjust'>
+        <div className='Margin2'>
+          <text className='Desc_para'>Current Statistics</text>
+        </div>
         <text className='Desc_para Desc_micro'>
           FutureSpace is a machine-learned predictor that estimates the likelihood
           of a current bank customer leaving to another competitor (attrition).
@@ -259,16 +298,18 @@ const App = () => {
         <text className='Header_title Desc_title'>Free Customer-Churning
         Prediction Tool</text>
       </div>
-      <div className='Text_box Column Adjust Enter'> 
-        <text className='Desc_para'>About</text>
+      <div className='Text_box Column Adjust Enter'>
+        <div className='Margin2'>
+          <text className='Desc_para'>About</text>
+        </div>
         <text className='Desc_para Desc_micro'>
           FutureSpace is a machine-learned predictor that estimates the likelihood
           of a current bank customer leaving to another competitor (attrition).
         </text>
       </div>
       <Slot3 />
-      <Slot2 />
       <Slot1 />
+      <Slot2 />
     </div>
   );
 }

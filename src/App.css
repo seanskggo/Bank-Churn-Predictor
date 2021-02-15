@@ -64,11 +64,15 @@
 }
 
 .Margin2 {
-  margin-bottom: 50px;
+  margin-bottom: 5px;
 }
 
 .Margin3 {
   margin-top: 50px;
+}
+
+.Margin4 {
+  margin-bottom: 15px;
 }
 
 .Background {
@@ -95,6 +99,10 @@
   min-height: 160px;
   margin-bottom: 20px;
   margin-top: 50px;
+}
+
+.Big {
+  height: 600px;
 }
 
 .Desc_para {
