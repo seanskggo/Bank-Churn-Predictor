@@ -102,7 +102,7 @@
 
 .Stat_box {
   height: 35vh;
-  width: calc(20vmin + 300px);
+  width: calc(35vw + 200px);
   min-height: 160px;
   justify-content: space-evenly;
   margin-bottom: 40px;
