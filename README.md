@@ -1,6 +1,6 @@
 # Bank Churn Predictor
 
-RESTful Web app that predicts a customer's lieklihood of leaving a bank (Customer Attrition). 
+REST-ful web app that predicts a customer's lieklihood of leaving a bank (Customer Attrition). 
 
 Front-end technologies: React, Axios
 Back-end technologies: Flask (incl. CORS), Sklearn, Pandas, Statsmodel
