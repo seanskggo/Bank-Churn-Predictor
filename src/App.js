@@ -172,7 +172,7 @@ const Main = () => {
     })();
   }
   return (
-    <div>
+    <div className='Enter'>
       {Generate_fields(values, set_values)}
       <div className='Row Adjust Centre Hspace'>
         <SetGender values={values} set_values={set_values} />
@@ -194,7 +194,7 @@ const Main = () => {
 const App = () => {
   return (
     <div className="App Adjust">
-      <div className="Background Adjust Column">
+      <div className="Background Adjust Column Enter">
         <text className='Header_title'>FutureSpace</text>
         <text className='Header_title Desc_title'>Free Customer-Churning
         Prediction Tool</text>

@@ -93,9 +93,6 @@
   .Centre {
     width: 85vw;
   }
-}
-
-@media only screen and (max-width: 800px) { 
   .Background {
     height: 80vh;
     width: 100vw;
@@ -103,6 +100,11 @@
     background-image: url("./assets/cover-phone.png");
   }
 }
+
+@media (prefers-reduced-motion: no-preference) {
+  .Enter {animation: SlideIn 1.5s;}
+}
+
 
 @media only screen and (max-width: 1000px) { 
   .Hspace {
@@ -112,4 +114,10 @@
     flex-direction: column;
     justify-content: space-evenly;
   }
+}
+
+@keyframes SlideIn {
+  from {opacity: 0;}
+  50% {opacity: 0; transform: translateY(20px)}
+  to {transform: translateY(0px);}
 }
