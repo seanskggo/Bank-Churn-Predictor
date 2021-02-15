@@ -16,7 +16,6 @@ import InputGroup from 'react-bootstrap/InputGroup';
 import FormControl from 'react-bootstrap/FormControl';
 import Card from 'react-bootstrap/Card';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import cover from './assets/cover.png'
 import axios from 'axios';
 
 /////////////////////////////////////////////////////////////////////////////////
@@ -142,8 +141,7 @@ const Generate_fields = (values, set_values) => {
   )
 }
 
-// Main app for export
-const App = () => {
+const Main = () => {
   const [response, set_response] = useState("");
   const [values, set_values] = useState({
     'Gender': null,
@@ -162,7 +160,7 @@ const App = () => {
   const click = () => {
     if (check(values, set_response)) return;
     (() => {
-      set_response("Calculating... Please refresh if this takes too long")
+      set_response("Calculating... First submit may take a while.")
       axios.post("https://bank-churn-api.herokuapp.com/calculate", values)
         .then(res => {
           console.log(res);
@@ -174,10 +172,7 @@ const App = () => {
     })();
   }
   return (
-    <div className="App Adjust">
-      <div className="Background Adjust Column">
-        <text className='Header_title'>Bank Churn Predictor</text>
-      </div>
+    <div>
       {Generate_fields(values, set_values)}
       <div className='Row Adjust Centre Hspace'>
         <SetGender values={values} set_values={set_values} />
@@ -191,6 +186,20 @@ const App = () => {
           <Card.Title>{response}</Card.Title>
         </Card.Body>
       </Card>
+    </div>
+  );
+}
+
+// Main app for export
+const App = () => {
+  return (
+    <div className="App Adjust">
+      <div className="Background Adjust Column">
+        <text className='Header_title'>FutureSpace</text>
+        <text className='Header_title Desc_title'>Free Customer-Churning
+        Prediction Tool</text>
+      </div>
+      <Main />
     </div>
   );
 }
