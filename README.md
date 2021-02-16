@@ -8,4 +8,6 @@ Back-end technologies: Flask (incl. CORS), Sklearn, Pandas, Statsmodel
 
 Hosting: Firebase (front-end), Heroku (back-end)
 
+Dataset from: https://www.kaggle.com/sakshigoyal7/credit-card-customers
+
 Available at: https://futurespace-predict.web.app
