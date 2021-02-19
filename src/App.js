@@ -176,7 +176,7 @@ const Main = () => {
     })();
   }
   return (
-    <div className='Margin3'>
+    <div className='Margin5'>
       <text className='Desc_para'>Predictor</text>
       <div className='Margin4'>
         <text className='Desc_para Desc_micro'>
@@ -313,6 +313,10 @@ const App = () => {
       <Slot3 />
       <Slot1 />
       <Slot2 />
+      <text className='Desc_para Desc_micro_micro Margin4'>
+        <u>Disclaimer:</u> FutureSpace is a predictor only and do not assume any liabilities 
+        from its use
+      </text>
     </div>
   );
 }

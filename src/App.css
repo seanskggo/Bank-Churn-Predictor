@@ -77,7 +77,7 @@
 }
 
 .Margin5 {
-  margin-bottom: 50px;
+  margin-bottom: 4vh;
 }
 
 .Header_title {
@@ -126,8 +126,13 @@
 }
 
 .Values_micro {
-  font-size: calc(1vmin + 8px) !important;
+  font-size: calc(0.5vmin + 10px) !important;
   font-family: Montserrat-ExtraLight;
+}
+
+.Desc_micro_micro {
+  font-size: calc(1vmin + 5px);
+  width: calc(200px + 25vw);
 }
 
 /*////////////////////////////////////////////////////////////////////////////////
